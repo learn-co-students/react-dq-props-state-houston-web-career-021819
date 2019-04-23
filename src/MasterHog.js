@@ -1,29 +1,32 @@
 import React, { Component } from 'react'
 import Master from './assets/master-hog.png'
 import BabyHog from './BabyHog'
-// import offspring from './db.js'
+import offspring from './db.js'
 
 export default class MasterHog extends Component {
 
-  constructor() {
-    super()
-    this.state = {
-      eyeColor: "blue",
+  // constructor() {
+  //   super() //MasterHog is also the child class from Component. So before we use the this, we have to call super, that's why we need it
+    state = { 
+      eyeColor: "blue"
     }
-  }
+  // }
 
 
   changeEyeColor = (e) => {
-    this.setState({
-      eyeColor: e.target.value
+    this.setState({ 
+      eyeColor: e.target.value 
     })
+  } 
+
+  generateBaybyHog = () =>{
+    return offspring.map((baby)=><BabyHog {...baby} eyeColor = {this.state.eyeColor}/>)
   }
 
 
   render() {
-    return (
+    return ( 
       <div>
-
         <input type="radio" name="eyeColor" value="blue" onChange={this.changeEyeColor} />
         Blue<br></br>
         <input type="radio" name="eyeColor" value="sun" onChange={this.changeEyeColor} />
@@ -40,9 +43,7 @@ export default class MasterHog extends Component {
         </div>
         
         <ul className="hoglist">
-          <BabyHog />
-          <BabyHog />
-          <BabyHog />
+           {this.generateBaybyHog()}
         </ul>
 
       </div>
@@ -50,3 +51,10 @@ export default class MasterHog extends Component {
   }
 
 }
+
+
+/*
+  <BabyHog />
+  <BabyHog /> 
+  <BabyHog />  
+*/
