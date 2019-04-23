@@ -10,38 +10,59 @@ import GlowingBaby from './assets/glowing-eyes.png'
 
 export default class BabyHog extends Component {
 
+  
   constructor(props) {
     super(props)
   }
-
+   
+   state = {
+     weight: 10
+   }  
+   
+  
   changeWeight = (e) => {
-    // nothing needs to change here
+    // nothing needs to change here. props
     const newWeight = e.target.name === "+" ? (this.state.weight + 10) : (this.state.weight - 10)
     this.setState({
       weight: newWeight
     })
   }
 
+  
+
   render() {
+    let src = normalBaby
+    console.log(this.props.eyeColor == "sun")
+    console.log(this.state.src) 
+    if(this.props.eyeColor == "blue"){
+      src = BlueBaby
+     }else if(this.props.eyeColor == "sun"){
+      src = GlowingBaby
+     }else if(this.props.eyeColor == "glowing"){
+      src = SunBaby
+    }
+    //this is each object, this.props are all the properties of that object.
+    // props are variables passed to it by its parent component. State on the other hand is still variables, but directly initialized and managed by the component
     return (
       <li className="hogbabies">
-        <h1>Name</h1>
-        <h3>Weight:</h3>
-        <h3>Hobby:</h3>
-        <h4>Eye Color:</h4>
+        <h1>Name: {this.props.name} </h1>
+        <h3>Weight: {this.state.weight} </h3>
+        <h3>Hobby: {this.props.hobby}</h3>
+        <h4>Eye Color: {this.props.eyeColor}</h4>
           
-        <Button name="+">
+        <Button onClick = {this.changeWeight} name="+">
           Increase Weight
         </Button>
-        <Button name="-">
+        <Button onClick = {this.changeWeight} name="-">
           Decrease Weight
         </Button>
 
         <div className="hb-wrap">
-          <img src={normalBaby} style={{height: '200px'}} alt="MasterBlasterJrJr" />
+          <img src={src} style={{height: '200px'}} alt="MasterBlasterJrJr" />
         </div>
         
       </li>
     )
   }
 }
+ 
