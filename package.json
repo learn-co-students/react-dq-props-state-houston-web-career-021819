@@ -13,5 +13,17 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "description": "In this program, we have three components: `App`, `MasterHog`, and `BabyHog`.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcjc2019/react-dq-props-state-houston-web-career-021819.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcjc2019/react-dq-props-state-houston-web-career-021819/issues"
+  },
+  "homepage": "https://github.com/jcjc2019/react-dq-props-state-houston-web-career-021819#readme"
 }
